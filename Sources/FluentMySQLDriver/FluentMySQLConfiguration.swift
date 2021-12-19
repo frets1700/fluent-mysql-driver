@@ -112,15 +112,15 @@ extension DatabaseConfigurationFactory {
     }
 }
 
-struct FluentMySQLConfiguration: DatabaseConfiguration {
+public struct FluentMySQLConfiguration: DatabaseConfiguration {
     let configuration: MySQLConfiguration
     let maxConnectionsPerEventLoop: Int
     let connectionPoolTimeout: TimeAmount
     let encoder: MySQLDataEncoder
     let decoder: MySQLDataDecoder
-    var middleware: [AnyModelMiddleware]
+    public var middleware: [AnyModelMiddleware]
 
-    func makeDriver(for databases: Databases) -> DatabaseDriver {
+    public func makeDriver(for databases: Databases) -> DatabaseDriver {
         let db = MySQLConnectionSource(
             configuration: self.configuration
         )
